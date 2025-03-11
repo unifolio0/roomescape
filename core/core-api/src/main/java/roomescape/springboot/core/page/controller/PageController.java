@@ -1,4 +1,4 @@
-package roomescape.springboot.core.api.controller;
+package roomescape.springboot.core.page.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
