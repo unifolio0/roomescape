@@ -1,10 +1,10 @@
-package roomescape.springboot.core.api.service;
+package roomescape.springboot.core.api.reservation.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import roomescape.springboot.core.api.dto.ReservationRequest;
-import roomescape.springboot.core.api.dto.ReservationResponse;
+import roomescape.springboot.core.api.reservation.dto.ReservationRequest;
+import roomescape.springboot.core.api.reservation.dto.ReservationResponse;
 import roomescape.springboot.db.core.ReservationEntity;
 import roomescape.springboot.db.core.ReservationRepository;
 

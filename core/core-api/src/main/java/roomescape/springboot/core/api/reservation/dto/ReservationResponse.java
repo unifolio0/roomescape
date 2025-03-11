@@ -1,4 +1,4 @@
-package roomescape.springboot.core.api.dto;
+package roomescape.springboot.core.api.reservation.dto;
 
 import roomescape.springboot.db.core.ReservationEntity;
 
