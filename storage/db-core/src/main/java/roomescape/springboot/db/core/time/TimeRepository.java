@@ -17,15 +17,23 @@ public class TimeRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public List<TimeEntity> findAll() {
-        String sql = "select id, start_at from time";
+        String sql = "select id, start_at from reservation_time";
         return jdbcTemplate.query(sql, (rs, rowNum) -> new TimeEntity(
                 rs.getLong("id"),
                 rs.getTime("start_at").toLocalTime()
         ));
     }
 
+    public TimeEntity findById(Long id) {
+        String sql = "select id, start_at from reservation_time where id = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new TimeEntity(
+                rs.getLong("id"),
+                rs.getTime("start_at").toLocalTime()
+        ), id);
+    }
+
     public TimeEntity save(TimeEntity timeEntity) {
-        String sql = "insert into time (start_at) values (?, ?, ?)";
+        String sql = "insert into reservation_time (start_at) values (?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
@@ -36,7 +44,7 @@ public class TimeRepository {
     }
 
     public void delete(Long id) {
-        String sql = "delete from time where id = ?";
+        String sql = "delete from reservation_time where id = ?";
         jdbcTemplate.update(sql, id);
     }
 }
