@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import roomescape.springboot.core.api.reservation.dto.ReservationRequest;
 import roomescape.springboot.core.api.reservation.dto.ReservationResponse;
-import roomescape.springboot.db.core.ReservationEntity;
-import roomescape.springboot.db.core.ReservationRepository;
+import roomescape.springboot.db.core.reservation.ReservationEntity;
+import roomescape.springboot.db.core.reservation.ReservationRepository;
 
 @Service
 @RequiredArgsConstructor

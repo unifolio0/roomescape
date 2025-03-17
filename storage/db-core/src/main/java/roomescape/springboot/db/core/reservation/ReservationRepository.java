@@ -1,6 +1,8 @@
-package roomescape.springboot.db.core;
+package roomescape.springboot.db.core.reservation;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.Time;
 import java.util.List;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +22,8 @@ public class ReservationRepository {
         return jdbcTemplate.query(sql, (rs, rowNum) -> new ReservationEntity(
                 rs.getLong("id"),
                 rs.getString("name"),
-                rs.getString("date"),
-                rs.getString("time")
+                rs.getDate("date").toLocalDate(),
+                rs.getTime("time").toLocalTime()
         ));
     }
 
@@ -31,8 +33,8 @@ public class ReservationRepository {
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
             ps.setString(1, reservationEntity.getName());
-            ps.setString(2, reservationEntity.getDate());
-            ps.setString(3, reservationEntity.getTime());
+            ps.setDate(2, Date.valueOf(reservationEntity.getDate()));
+            ps.setTime(3, Time.valueOf(reservationEntity.getTime()));
             return ps;
         }, keyHolder);
         return new ReservationEntity(Objects.requireNonNull(keyHolder.getKey()).longValue(),
