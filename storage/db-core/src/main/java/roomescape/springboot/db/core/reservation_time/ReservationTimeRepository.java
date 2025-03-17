@@ -1,4 +1,4 @@
-package roomescape.springboot.db.core.time;
+package roomescape.springboot.db.core.reservation_time;
 
 import java.sql.PreparedStatement;
 import java.sql.Time;
@@ -12,35 +12,36 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class TimeRepository {
+public class ReservationTimeRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public List<TimeEntity> findAll() {
+    public List<ReservationTimeEntity> findAll() {
         String sql = "select id, start_at from reservation_time";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new TimeEntity(
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new ReservationTimeEntity(
                 rs.getLong("id"),
                 rs.getTime("start_at").toLocalTime()
         ));
     }
 
-    public TimeEntity findById(Long id) {
+    public ReservationTimeEntity findById(Long id) {
         String sql = "select id, start_at from reservation_time where id = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new TimeEntity(
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new ReservationTimeEntity(
                 rs.getLong("id"),
                 rs.getTime("start_at").toLocalTime()
         ), id);
     }
 
-    public TimeEntity save(TimeEntity timeEntity) {
+    public ReservationTimeEntity save(ReservationTimeEntity reservationTimeEntity) {
         String sql = "insert into reservation_time (start_at) values (?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
-            ps.setTime(1, Time.valueOf(timeEntity.getStartAt()));
+            ps.setTime(1, Time.valueOf(reservationTimeEntity.getStartAt()));
             return ps;
         }, keyHolder);
-        return new TimeEntity(Objects.requireNonNull(keyHolder.getKey()).longValue(), timeEntity.getStartAt());
+        return new ReservationTimeEntity(Objects.requireNonNull(keyHolder.getKey()).longValue(),
+                reservationTimeEntity.getStartAt());
     }
 
     public void delete(Long id) {
