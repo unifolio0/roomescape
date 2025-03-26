@@ -18,6 +18,9 @@ public class ReservationService {
     private final ReservationWriter reservationWriter;
 
     public ReservationResponse save(ReservationRequest reservationRequest) {
+        if (reservationReader.existsByReservation(reservationRequest)) {
+            throw new IllegalArgumentException();
+        }
         Reservation reservation = reservationWriter.save(reservationRequest);
         return new ReservationResponse(reservation, new ReservationTimeResponse(reservation.getReservationTime()));
     }

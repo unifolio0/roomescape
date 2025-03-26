@@ -1,9 +1,11 @@
 package roomescape.springboot.core.api.reservation.tool;
 
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import roomescape.springboot.core.api.reservation.domain.Reservation;
+import roomescape.springboot.core.api.reservation.dto.ReservationRequest;
 import roomescape.springboot.core.api.reservation_time.domain.ReservationTime;
 import roomescape.springboot.db.core.reservation.ReservationEntity;
 import roomescape.springboot.db.core.reservation.ReservationRepository;
@@ -33,5 +35,12 @@ public class ReservationReader {
     public boolean existsByReservationTime(Long timeId) {
         List<ReservationEntity> reservationEntities = reservationRepository.findByReservationTime(timeId);
         return !reservationEntities.isEmpty();
+    }
+
+    public boolean existsByReservation(ReservationRequest reservationRequest) {
+        Optional<ReservationEntity> reservationEntity = reservationRepository.findByReservation(
+                reservationRequest.date(), reservationRequest.timeId()
+        );
+        return reservationEntity.isPresent();
     }
 }
