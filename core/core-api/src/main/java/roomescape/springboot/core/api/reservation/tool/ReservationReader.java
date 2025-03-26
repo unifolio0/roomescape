@@ -28,7 +28,8 @@ public class ReservationReader {
     }
 
     private ReservationTime getTime(Long timeId) {
-        ReservationTimeEntity reservationTimeEntity = reservationTimeRepository.findById(timeId);
+        ReservationTimeEntity reservationTimeEntity = reservationTimeRepository.findById(timeId)
+                .orElseThrow(IllegalArgumentException::new);
         return new ReservationTime(reservationTimeEntity.getStartAt(), reservationTimeEntity.getId());
     }
 

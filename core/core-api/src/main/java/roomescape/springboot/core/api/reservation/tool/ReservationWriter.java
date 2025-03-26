@@ -18,7 +18,8 @@ public class ReservationWriter {
     private final ReservationTimeRepository reservationTimeRepository;
 
     public Reservation save(ReservationRequest request) {
-        ReservationTimeEntity time = reservationTimeRepository.findById(request.timeId());
+        ReservationTimeEntity time = reservationTimeRepository.findById(request.timeId())
+                .orElseThrow(IllegalArgumentException::new);
         ReservationEntity reservationEntity = reservationRepository.save(
                 new ReservationEntity(request.name(), request.date(), time));
         return new Reservation(reservationEntity.getName(), reservationEntity.getDate(),

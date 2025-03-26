@@ -20,4 +20,10 @@ public class ReservationTimeReader {
                         reservationTimeEntity.getId()))
                 .toList();
     }
+
+    public ReservationTime findById(Long id) {
+        ReservationTimeEntity reservationTimeEntity = reservationTimeRepository.findById(id)
+                .orElseThrow(IllegalArgumentException::new);
+        return new ReservationTime(reservationTimeEntity.getStartAt(), reservationTimeEntity.getId());
+    }
 }

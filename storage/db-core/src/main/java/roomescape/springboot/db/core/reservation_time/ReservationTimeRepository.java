@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.Time;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -24,12 +25,14 @@ public class ReservationTimeRepository {
         ));
     }
 
-    public ReservationTimeEntity findById(Long id) {
+    public Optional<ReservationTimeEntity> findById(Long id) {
         String sql = "select id, start_at from reservation_time where id = ?";
-        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new ReservationTimeEntity(
-                rs.getLong("id"),
-                rs.getTime("start_at").toLocalTime()
-        ), id);
+        ReservationTimeEntity reservationTimeEntity = jdbcTemplate.queryForObject(sql,
+                (rs, rowNum) -> new ReservationTimeEntity(
+                        rs.getLong("id"),
+                        rs.getTime("start_at").toLocalTime()
+                ), id);
+        return Optional.ofNullable(reservationTimeEntity);
     }
 
     public ReservationTimeEntity save(ReservationTimeEntity reservationTimeEntity) {
