@@ -2,6 +2,7 @@ package roomescape.springboot.db.core.reservation;
 
 import java.time.LocalDate;
 import lombok.Getter;
+import roomescape.springboot.db.core.reservation_time.ReservationTimeEntity;
 
 @Getter
 public class ReservationEntity {
@@ -9,16 +10,16 @@ public class ReservationEntity {
     private Long id;
     private String name;
     private LocalDate date;
-    private Long timeId;
+    private ReservationTimeEntity reservationTime;
 
-    public ReservationEntity(Long id, String name, LocalDate date, Long timeId) {
+    public ReservationEntity(Long id, String name, LocalDate date, ReservationTimeEntity reservationTime) {
         this.id = id;
         this.name = name;
         this.date = date;
-        this.timeId = timeId;
+        this.reservationTime = reservationTime;
     }
 
-    public ReservationEntity(String name, LocalDate date, Long timeId) {
-        this(null, name, date, timeId);
+    public ReservationEntity(String name, LocalDate date, ReservationTimeEntity reservationTime) {
+        this(null, name, date, reservationTime);
     }
 }

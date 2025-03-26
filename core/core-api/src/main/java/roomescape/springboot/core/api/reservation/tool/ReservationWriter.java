@@ -20,7 +20,7 @@ public class ReservationWriter {
     public Reservation save(ReservationRequest request) {
         ReservationTimeEntity time = reservationTimeRepository.findById(request.timeId());
         ReservationEntity reservationEntity = reservationRepository.save(
-                new ReservationEntity(request.name(), request.date(), time.getId()));
+                new ReservationEntity(request.name(), request.date(), time));
         return new Reservation(reservationEntity.getName(), reservationEntity.getDate(),
                 new ReservationTime(time.getStartAt(), time.getId()), reservationEntity.getId());
     }

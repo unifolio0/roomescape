@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import roomescape.springboot.db.core.reservation_time.ReservationTimeEntity;
 
 @Repository
 @RequiredArgsConstructor
@@ -32,7 +33,10 @@ public class ReservationRepository {
                 rs.getLong("id"),
                 rs.getString("name"),
                 rs.getDate("date").toLocalDate(),
-                rs.getLong("time_id")
+                new ReservationTimeEntity(
+                        rs.getLong("time_id"),
+                        rs.getTime("time_value").toLocalTime()
+                )
         ));
     }
 
@@ -43,11 +47,11 @@ public class ReservationRepository {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
             ps.setString(1, reservationEntity.getName());
             ps.setDate(2, Date.valueOf(reservationEntity.getDate()));
-            ps.setLong(3, reservationEntity.getTimeId());
+            ps.setLong(3, reservationEntity.getReservationTime().getId());
             return ps;
         }, keyHolder);
         return new ReservationEntity(Objects.requireNonNull(keyHolder.getKey()).longValue(),
-                reservationEntity.getName(), reservationEntity.getDate(), reservationEntity.getTimeId());
+                reservationEntity.getName(), reservationEntity.getDate(), reservationEntity.getReservationTime());
     }
 
     public void deleteById(Long id) {
