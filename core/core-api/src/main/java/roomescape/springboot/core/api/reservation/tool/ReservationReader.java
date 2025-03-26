@@ -21,12 +21,17 @@ public class ReservationReader {
         List<ReservationEntity> reservationEntities = reservationRepository.findAll();
         return reservationEntities.stream()
                 .map(reservationEntity -> new Reservation(reservationEntity.getName(), reservationEntity.getDate(),
-                        getTime(reservationEntity.getTimeId()), reservationEntity.getId()))
+                        getTime(reservationEntity.getReservationTime().getId()), reservationEntity.getId()))
                 .toList();
     }
 
     private ReservationTime getTime(Long timeId) {
         ReservationTimeEntity reservationTimeEntity = reservationTimeRepository.findById(timeId);
         return new ReservationTime(reservationTimeEntity.getStartAt(), reservationTimeEntity.getId());
+    }
+
+    public boolean existsByReservationTime(Long timeId) {
+        List<ReservationEntity> reservationEntities = reservationRepository.findByReservationTime(timeId);
+        return !reservationEntities.isEmpty();
     }
 }

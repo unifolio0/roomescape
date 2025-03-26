@@ -3,6 +3,7 @@ package roomescape.springboot.core.api.reservation_time.service;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import roomescape.springboot.core.api.reservation.tool.ReservationReader;
 import roomescape.springboot.core.api.reservation_time.domain.ReservationTime;
 import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeRequest;
 import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeResponse;
@@ -15,6 +16,7 @@ public class ReservationTimeService {
 
     private final ReservationTimeReader reservationTimeReader;
     private final ReservationTimeWriter reservationTimeWriter;
+    private final ReservationReader reservationReader;
 
     public ReservationTimeResponse save(ReservationTimeRequest reservationTimeRequest) {
         ReservationTime reservationTime = reservationTimeWriter.save(reservationTimeRequest);
@@ -29,6 +31,9 @@ public class ReservationTimeService {
     }
 
     public void delete(Long id) {
+        if (!reservationReader.existsByReservationTime(id)) {
+            throw new IllegalArgumentException("해당 시간의 예약이 존재합니다.");
+        }
         reservationTimeWriter.deleteById(id);
     }
 }

@@ -40,6 +40,30 @@ public class ReservationRepository {
         ));
     }
 
+    public List<ReservationEntity> findByReservationTime(Long timeId) {
+        String sql = """
+                SELECT
+                    r.id AS reservation_id,
+                    r.name,
+                    r.date,
+                    t.id AS time_id,
+                    t.start_at AS time_value
+                FROM reservation as r
+                INNER JOIN reservation_time AS t
+                ON r.time_id = t.id
+                WHERE r.time_id = ?
+                """;
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new ReservationEntity(
+                rs.getLong("id"),
+                rs.getString("name"),
+                rs.getDate("date").toLocalDate(),
+                new ReservationTimeEntity(
+                        rs.getLong("time_id"),
+                        rs.getTime("time_value").toLocalTime()
+                )), timeId
+        );
+    }
+
     public ReservationEntity save(ReservationEntity reservationEntity) {
         String sql = "insert into reservation (name, date, time_id) values (?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
