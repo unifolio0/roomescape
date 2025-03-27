@@ -9,9 +9,9 @@ import roomescape.springboot.core.api.reservation.dto.ReservationRequest;
 import roomescape.springboot.core.api.reservation.dto.ReservationResponse;
 import roomescape.springboot.core.api.reservation.tool.ReservationReader;
 import roomescape.springboot.core.api.reservation.tool.ReservationWriter;
-import roomescape.springboot.core.api.reservation_time.domain.ReservationTime;
-import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeResponse;
-import roomescape.springboot.core.api.reservation_time.tool.ReservationTimeReader;
+import roomescape.springboot.core.api.reservationtime.domain.ReservationTime;
+import roomescape.springboot.core.api.reservationtime.dto.ReservationTimeResponse;
+import roomescape.springboot.core.api.reservationtime.tool.ReservationTimeReader;
 
 @Service
 @RequiredArgsConstructor

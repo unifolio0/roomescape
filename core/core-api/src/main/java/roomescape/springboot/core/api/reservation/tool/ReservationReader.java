@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import roomescape.springboot.core.api.reservation.domain.Reservation;
 import roomescape.springboot.core.api.reservation.dto.ReservationRequest;
-import roomescape.springboot.core.api.reservation_time.domain.ReservationTime;
+import roomescape.springboot.core.api.reservationtime.domain.ReservationTime;
 import roomescape.springboot.db.core.reservation.ReservationEntity;
 import roomescape.springboot.db.core.reservation.ReservationRepository;
 import roomescape.springboot.db.core.reservation_time.ReservationTimeEntity;

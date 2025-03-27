@@ -2,7 +2,7 @@ package roomescape.springboot.core.api.reservation.dto;
 
 import java.time.LocalDate;
 import roomescape.springboot.core.api.reservation.domain.Reservation;
-import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeResponse;
+import roomescape.springboot.core.api.reservationtime.dto.ReservationTimeResponse;
 
 public record ReservationResponse(long id, String name, LocalDate date, ReservationTimeResponse time) {
 

@@ -1,4 +1,4 @@
-package roomescape.springboot.core.api.reservation_time.dto;
+package roomescape.springboot.core.api.reservationtime.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

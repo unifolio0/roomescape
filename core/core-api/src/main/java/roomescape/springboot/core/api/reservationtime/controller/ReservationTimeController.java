@@ -1,4 +1,4 @@
-package roomescape.springboot.core.api.reservation_time.controller;
+package roomescape.springboot.core.api.reservationtime.controller;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeRequest;
-import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeResponse;
-import roomescape.springboot.core.api.reservation_time.service.ReservationTimeService;
+import roomescape.springboot.core.api.reservationtime.dto.ReservationTimeRequest;
+import roomescape.springboot.core.api.reservationtime.dto.ReservationTimeResponse;
+import roomescape.springboot.core.api.reservationtime.service.ReservationTimeService;
 
 @RestController
 @RequiredArgsConstructor

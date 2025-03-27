@@ -1,9 +1,9 @@
-package roomescape.springboot.core.api.reservation_time.tool;
+package roomescape.springboot.core.api.reservationtime.tool;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import roomescape.springboot.core.api.reservation_time.domain.ReservationTime;
-import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeRequest;
+import roomescape.springboot.core.api.reservationtime.domain.ReservationTime;
+import roomescape.springboot.core.api.reservationtime.dto.ReservationTimeRequest;
 import roomescape.springboot.db.core.reservation_time.ReservationTimeEntity;
 import roomescape.springboot.db.core.reservation_time.ReservationTimeRepository;
 

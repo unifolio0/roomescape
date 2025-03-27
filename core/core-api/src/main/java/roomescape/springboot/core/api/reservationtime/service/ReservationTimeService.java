@@ -1,14 +1,14 @@
-package roomescape.springboot.core.api.reservation_time.service;
+package roomescape.springboot.core.api.reservationtime.service;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import roomescape.springboot.core.api.reservation.tool.ReservationReader;
-import roomescape.springboot.core.api.reservation_time.domain.ReservationTime;
-import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeRequest;
-import roomescape.springboot.core.api.reservation_time.dto.ReservationTimeResponse;
-import roomescape.springboot.core.api.reservation_time.tool.ReservationTimeReader;
-import roomescape.springboot.core.api.reservation_time.tool.ReservationTimeWriter;
+import roomescape.springboot.core.api.reservationtime.domain.ReservationTime;
+import roomescape.springboot.core.api.reservationtime.dto.ReservationTimeRequest;
+import roomescape.springboot.core.api.reservationtime.dto.ReservationTimeResponse;
+import roomescape.springboot.core.api.reservationtime.tool.ReservationTimeReader;
+import roomescape.springboot.core.api.reservationtime.tool.ReservationTimeWriter;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package roomescape.springboot.core.api.reservation_time.domain;
+package roomescape.springboot.core.api.reservationtime.domain;
 
 import java.time.LocalTime;
 import lombok.Getter;
