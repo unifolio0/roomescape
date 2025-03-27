@@ -2,7 +2,7 @@ package roomescape.springboot.db.core.reservation;
 
 import java.time.LocalDate;
 import lombok.Getter;
-import roomescape.springboot.db.core.reservation_time.ReservationTimeEntity;
+import roomescape.springboot.db.core.reservationtime.ReservationTimeEntity;
 
 @Getter
 public class ReservationEntity {

@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import roomescape.springboot.db.core.reservation_time.ReservationTimeEntity;
+import roomescape.springboot.db.core.reservationtime.ReservationTimeEntity;
 
 @Repository
 @RequiredArgsConstructor

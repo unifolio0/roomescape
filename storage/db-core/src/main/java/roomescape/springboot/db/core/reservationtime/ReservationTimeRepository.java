@@ -1,4 +1,4 @@
-package roomescape.springboot.db.core.reservation_time;
+package roomescape.springboot.db.core.reservationtime;
 
 import java.sql.PreparedStatement;
 import java.sql.Time;
